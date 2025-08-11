@@ -1,0 +1,93 @@
+%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 612 792]
+/Contents 4 0 R
+>>
+endobj
+
+4 0 obj
+<<
+/Length 500
+>>
+stream
+BT
+/F1 24 Tf
+72 720 Td
+(Shiva Kumar Chakali) Tj
+/F1 14 Tf
+0 -30 Td
+(Software Engineer / Developer) Tj
+/F1 12 Tf
+0 -25 Td
+(schakali2000@gmail.com | linkedin.com/in/shiva-kumar-6b32ba20) Tj
+0 -20 Td
+(Charlotte, NC | UNC Charlotte) Tj
+0 -30 Td
+(EDUCATION) Tj
+0 -15 Td
+(M.S. in Computer Science, UNC Charlotte | Aug 2024 - Dec 2025) Tj
+0 -30 Td
+(EXPERIENCE) Tj
+0 -15 Td
+(Deloitte USI - React / Power BI Developer | Sep 2023 - Jul 2024) Tj
+0 -10 Td
+(- Built React apps and Power BI dashboards with DAX, M, SQL Server, Azure Synapse) Tj
+0 -10 Td
+(- Automated reporting pipelines, collaborated in Agile teams) Tj
+0 -20 Td
+(Amazon - Cloud Infrastructure DevOps Intern | Jan 2023 - Jun 2023) Tj
+0 -10 Td
+(- Improved CI/CD, managed cloud infra, resolved deployment and security issues) Tj
+0 -30 Td
+(SKILLS) Tj
+0 -15 Td
+(Languages: Python, Java, JavaScript, C++, SQL) Tj
+0 -10 Td
+(Frameworks: React, Angular, Node, Express, Flask) Tj
+0 -10 Td
+(Cloud/DevOps: AWS, Docker, CI/CD, Jenkins, GitHub Actions) Tj
+0 -10 Td
+(Tools: Power BI, DAX, REST APIs, Git, MongoDB, MySQL, Agile) Tj
+0 -30 Td
+(PROJECTS) Tj
+0 -15 Td
+(LEZIT Transports - Full-stack transport booking platform) Tj
+0 -10 Td
+(Smart Traffic Lights - RL solution reducing wait time by 99.8%) Tj
+ET
+endstream
+endobj
+
+xref
+0 5
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000204 00000 n 
+trailer
+<<
+/Size 5
+/Root 1 0 R
+>>
+startxref
+751
+%%EOF 
