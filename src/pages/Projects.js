@@ -1,8 +1,10 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ExternalLink, Github, Globe } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Github, Globe, X, ArrowRight } from 'lucide-react';
 
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -123,7 +125,15 @@ const Projects = () => {
     }
   ];
 
+  const openProjectModal = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
 
+  const closeProjectModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
 
   return (
     <div className="min-h-screen pt-16">
@@ -205,29 +215,38 @@ const Projects = () => {
                   </div>
 
                   {/* Project Links */}
-                  <div className="flex space-x-3">
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center space-x-1 text-primary-600 dark:text-primary-400 hover:underline"
-                      >
-                        <Globe size={16} />
-                        <span className="text-sm">Live</span>
-                      </a>
-                    )}
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center space-x-1 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
-                      >
-                        <Github size={16} />
-                        <span className="text-sm">Code</span>
-                      </a>
-                    )}
+                  <div className="flex justify-between items-center">
+                    <div className="flex space-x-3">
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-1 text-primary-600 dark:text-primary-400 hover:underline"
+                        >
+                          <Globe size={16} />
+                          <span className="text-sm">Live</span>
+                        </a>
+                      )}
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-1 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+                        >
+                          <Github size={16} />
+                          <span className="text-sm">Code</span>
+                        </a>
+                      )}
+                    </div>
+                    <button
+                      onClick={() => openProjectModal(project)}
+                      className="flex items-center space-x-1 text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
+                    >
+                      <span className="text-sm font-medium">See More</span>
+                      <ArrowRight size={14} />
+                    </button>
                   </div>
                 </div>
               </motion.div>
@@ -345,6 +364,135 @@ const Projects = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Project Details Modal */}
+      <AnimatePresence>
+        {isModalOpen && selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+            onClick={closeProjectModal}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-white dark:bg-dark-900 rounded-xl shadow-xl max-w-3xl w-full max-h-[85vh] overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Header with Image */}
+              <div className="relative">
+                <div className="h-48 overflow-hidden rounded-t-xl">
+                  <img 
+                    src={selectedProject.image} 
+                    alt={selectedProject.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                </div>
+                <button
+                  onClick={closeProjectModal}
+                  className="absolute top-4 right-4 p-2 bg-white/90 dark:bg-dark-800/90 backdrop-blur-sm rounded-full shadow-lg hover:bg-white dark:hover:bg-dark-800 transition-all duration-200 hover:scale-110"
+                >
+                  <X size={18} className="text-gray-600 dark:text-gray-400" />
+                </button>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h2 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
+                    {selectedProject.title}
+                  </h2>
+                  <div className="flex flex-wrap gap-1">
+                    {selectedProject.technologies.slice(0, 3).map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2 py-1 bg-white/20 backdrop-blur-sm text-white rounded-full text-xs font-medium border border-white/30"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {selectedProject.technologies.length > 3 && (
+                      <span className="px-2 py-1 bg-white/20 backdrop-blur-sm text-white rounded-full text-xs font-medium border border-white/30">
+                        +{selectedProject.technologies.length - 3} more
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Modal Content */}
+              <div className="p-6 overflow-y-auto max-h-[calc(85vh-192px)]">
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
+                    Project Overview
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
+                    {selectedProject.longDescription}
+                  </p>
+                </div>
+
+                {/* Technologies Section */}
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
+                    Technologies Used
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.technologies.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1 bg-primary-100 dark:bg-primary-900/20 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Features Section */}
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
+                    Key Features
+                  </h3>
+                  <ul className="space-y-2">
+                    {selectedProject.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start space-x-2">
+                        <span className="text-primary-600 dark:text-primary-400 mt-1">•</span>
+                        <span className="text-gray-600 dark:text-gray-400 text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Project Links */}
+                <div className="flex flex-wrap gap-3 pt-4 border-t border-gray-200 dark:border-dark-700">
+                  {selectedProject.liveUrl && (
+                    <a
+                      href={selectedProject.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary inline-flex items-center space-x-2 px-4 py-2 text-sm font-medium"
+                    >
+                      <Globe size={16} />
+                      <span>View Live Project</span>
+                    </a>
+                  )}
+                  {selectedProject.githubUrl && (
+                    <a
+                      href={selectedProject.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-secondary inline-flex items-center space-x-2 px-4 py-2 text-sm font-medium"
+                    >
+                      <Github size={16} />
+                      <span>View Code</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

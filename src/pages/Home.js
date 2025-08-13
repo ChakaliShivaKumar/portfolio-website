@@ -338,7 +338,7 @@ const Home = () => {
                 Smart Traffic Lights
               </h3>
               <p className="text-gray-600 dark:text-gray-400 mb-4">
-                Reinforcement learning solution reducing wait time by 99.8%
+                Reinforcement learning solution reducing wait time by 40%.
               </p>
               <span className="text-gray-500 dark:text-gray-500 text-sm">
                 Research Project
