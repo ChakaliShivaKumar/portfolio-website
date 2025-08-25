@@ -1,9 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Mail, Linkedin, Github } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const socialLinks = [
     {
@@ -13,12 +18,12 @@ const Footer = () => {
     },
     {
       name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/shiva-kumar-6b32ba20',
+      url: 'https://www.linkedin.com/in/shiva-kumar-chakali',
       icon: Linkedin,
     },
     {
       name: 'GitHub',
-      url: 'https://github.com',
+      url: 'https://github.com/ChakaliShivaKumar',
       icon: Github,
     },
   ];
@@ -44,36 +49,40 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="/about"
+                <Link
+                  to="/about"
+                  onClick={scrollToTop}
                   className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
                 >
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/experience"
+                <Link
+                  to="/experience"
+                  onClick={scrollToTop}
                   className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
                 >
                   Experience
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/projects"
+                <Link
+                  to="/projects"
+                  onClick={scrollToTop}
                   className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
                 >
                   Projects
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/contact"
+                <Link
+                  to="/contact"
+                  onClick={scrollToTop}
                   className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200"
                 >
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -104,7 +113,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-gray-200 dark:border-dark-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-gray-600 dark:text-gray-400 text-sm">
-            © {currentYear} Shiva Kumar Chakali. All rights reserved.
+            © {currentYear} Shiva Kumar Chakali.
           </p>
           <p className="text-gray-600 dark:text-gray-400 text-sm">
             

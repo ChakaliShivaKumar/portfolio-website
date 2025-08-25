@@ -128,7 +128,7 @@ const Home = () => {
               className="flex justify-center space-x-6 mt-12"
             >
               <a
-                href="https://www.linkedin.com/in/shiva-kumar-chakali-6b32ba200/"
+                href="https://www.linkedin.com/in/shiva-kumar-chakali"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-white dark:bg-dark-800 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"

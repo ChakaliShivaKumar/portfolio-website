@@ -84,12 +84,12 @@ const About = () => {
                     <div className="flex items-center space-x-3">
                       <Linkedin size={20} className="text-primary-600 dark:text-primary-400" />
                       <a
-                        href="https://www.linkedin.com/in/shiva-kumar-6b32ba20"
+                        href="https://www.linkedin.com/in/shiva-kumar-chakali"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                       >
-                        linkedin.com/in/shiva-kumar-6b32ba20
+                        linkedin.com/in/shiva-kumar-chakali
                       </a>
                     </div>
                     <div className="flex items-center space-x-3">
